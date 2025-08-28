@@ -15,8 +15,8 @@ import java.util.*;
  * @author Neto
  */
 public class MainWindow extends javax.swing.JFrame {
-    private Campeonato campeonato;    // campo para digitar o nome
-    private JLabel jLabelPontos;       // exemplo de alvo de exibição
+    private Campeonato campeonato;  //Separei os atributos por conta de um erro que tava ocorrendo
+    private JLabel jLabelPontos;      
     private JLabel jLabelVitorias;
     private JLabel jLabelEmpates;
     private JLabel jLabelDerrotas;
@@ -27,7 +27,7 @@ public class MainWindow extends javax.swing.JFrame {
     public MainWindow(Campeonato camp) {
         initComponents();
         this.campeonato = camp;
-        
+       //Inicializa o Campeonato importante para o gráfico lá na frente 
         this.classificacaoFinal = campeonato.getTabelaClassificacao();
         
  
@@ -141,12 +141,12 @@ private void preencherTabela() {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         // 1. captura o nome e busca o Time
+         // captura o nome e busca o Time
     String nome = jTextField1.getText().trim();
     Time encontrado = campeonato.buscarTime(nome);
 
     if (encontrado != null) {
-        // 2. prepara uma lista só com esse time
+        // prepara o gráfico para o time escrito
         List<Graficos.Time> grafTimes = Collections.singletonList(
             new Graficos.Time(
               encontrado.getNome(),
@@ -157,8 +157,7 @@ private void preencherTabela() {
             )
         );
 
-        // 3. dispara a aplicação JavaFX
-        //    notar: só funciona se não tiver chamado launch antes
+        // dispara a aplicação JavaFX
         Graficos.launchWith(grafTimes);
     } else {
         JOptionPane.showMessageDialog(
@@ -171,6 +170,7 @@ private void preencherTabela() {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    //Implementa o algoritmo de busca de times no código principal
     String nome = jTextField1.getText().trim();
     Time encontrado = campeonato.buscarTime(nome);  
 
