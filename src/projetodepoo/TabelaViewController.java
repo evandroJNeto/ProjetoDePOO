@@ -59,7 +59,7 @@ public class TabelaViewController implements Initializable {
     private void criarGrafico() {
         String nome = buscaTextField.getText().trim();
         if (nome.isEmpty()) {
-            showAlert("Erro", "Por favor, digite o nome de um time.");
+            showAlert("Erro", "Digite o nome de um time.");
             return;
         }
 
