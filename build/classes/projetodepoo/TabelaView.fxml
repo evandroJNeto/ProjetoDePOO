@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" 
+            prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetodepoo.TabelaViewController">
+    
+        <center>
+        <TableView fx:id="tabelaView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="colunaPos" prefWidth="40.0" text="Pos" />
+                <TableColumn fx:id="colunaNome" prefWidth="150.0" text="Time" />
+                <TableColumn fx:id="colunaPontos" prefWidth="50.0" text="Pts" />
+                <TableColumn fx:id="colunaJogos" prefWidth="40.0" text="J" />
+                <TableColumn fx:id="colunaVitorias" prefWidth="40.0" text="V" />
+                <TableColumn fx:id="colunaEmpates" prefWidth="40.0" text="E" />
+                <TableColumn fx:id="colunaDerrotas" prefWidth="40.0" text="D" />
+                <TableColumn fx:id="colunaGolsPro" prefWidth="50.0" text="GP" />
+                <TableColumn fx:id="colunaGolsContra" prefWidth="50.0" text="GC" />
+                <TableColumn fx:id="colunaSaldoGols" prefWidth="50.0" text="SG" />
+            </columns>
+        </TableView>
+    </center>
+    
+    <bottom>
+        <HBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="graficoButton" mnemonicParsing="false" onAction="#criarGrafico" 
+                        text="Criar Gráfico do Time" />
+                <Button fx:id="graficoButtonPizza" mnemonicParsing="false" onAction="#criarGraficoPizza" 
+                        text="Criar Gráfico Pizza do Time" />
+            </children>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+        </HBox>
+    </bottom>
+</BorderPane>
