@@ -28,14 +28,18 @@ class JanelaPrincipal(QMainWindow):
         
         layout_botoes = QHBoxLayout()
         
-        botao_desempenho = QPushButton("Ver Desempenho")
+        botao_desempenho = QPushButton("Gráfico de Desempenho (Barras)")
         botao_desempenho.clicked.connect(self.mostrar_desempenho)
         
-        botao_evolucao = QPushButton("Ver Evolução")
+        botao_evolucao = QPushButton("Evolução dos Pontos")
         botao_evolucao.clicked.connect(self.mostrar_evolucao)
-        
+
+        botao_pizza = QPushButton("Gráfico de Desempenho (Pizza)")
+        botao_pizza.clicked.connect(self.mostrar_pizza)
+
         layout_botoes.addWidget(botao_desempenho)
         layout_botoes.addWidget(botao_evolucao)
+        layout_botoes.addWidget(botao_pizza)
         layout_botoes.addStretch()
         
         layout.addWidget(self.tabela)
@@ -85,7 +89,17 @@ class JanelaPrincipal(QMainWindow):
         times = [self.modelo.times[indice.row()] for indice in selecionados]
         grafico = CriarGrafico.criar("evolucao", times)
         self._abrir_janela(grafico, "Evolução dos Pontos")
+
+    def mostrar_pizza(self):
+        selecionados = self.tabela.selectionModel().selectedRows()
+        if not selecionados:
+            self.mostrar_aviso("Selecione um time na tabela.")
+            return
     
+        time = self.modelo.times[selecionados[0].row()]
+        grafico = CriarGrafico.criar("pizza", time)
+        self._abrir_janela(grafico, f"Desempenho (Pizza) - {time.nome}")
+
     def _abrir_janela(self, visualizacao, titulo):
         from PyQt5.QtWidgets import QMainWindow
     
