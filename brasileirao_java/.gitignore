@@ -1,7 +1,12 @@
 build/
 dist/
-javafx-sdk-*/
-nbproject/private/
-
 *.class
 *.jar
+*.war
+
+nbproject/private/
+
+javafx-sdk-*/
+
+.DS_Store
+Thumbs.db
