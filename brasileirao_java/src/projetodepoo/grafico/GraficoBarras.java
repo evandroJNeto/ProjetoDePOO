@@ -45,7 +45,7 @@ public class GraficoBarras extends Grafico {
         stage.show();
 
         Platform.runLater(() -> {
-            vitorias.getNode().setStyle("-fx-bar-fill: #2ECC71;"); // VERDE
+            vitorias.getNode().setStyle("-fx-bar-fill: #2ECC71;");
             empates.getNode().setStyle("-fx-bar-fill: #FECA57;"); 
             derrotas.getNode().setStyle("-fx-bar-fill: #E74C3C;");
         });

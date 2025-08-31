@@ -13,7 +13,7 @@ public class Time {
     private int golsContra;
     private int qtdJogos;
     private List<Integer> golsPorPartida;
-    private List<Integer> evolucaoPontos; // NOVO: armazena pontos a cada rodada
+    private List<Integer> evolucaoPontos;
 
     public Time(String nome) {
         this.nome = nome;
@@ -25,10 +25,9 @@ public class Time {
         this.golsContra = 0;
         this.qtdJogos = 0;
         this.golsPorPartida = new ArrayList<>();
-        this.evolucaoPontos = new ArrayList<>(); // Inicializa a lista
-        this.evolucaoPontos.add(0); // Começa com 0 pontos
+        this.evolucaoPontos = new ArrayList<>();
+        this.evolucaoPontos.add(0);
     }
-
     public void registrarJogo(int golsFeitos, int golsSofridos) {
         this.qtdJogos++;
         this.golsPro += golsFeitos;
@@ -47,11 +46,9 @@ public class Time {
             this.derrotas++;
         }
         
-        // NOVO: Adiciona os pontos atuais à evolução
         this.evolucaoPontos.add(this.pontos);
     }
     
-    // NOVO: Getter para a evolução de pontos
     public List<Integer> getEvolucaoPontos() {
         return evolucaoPontos;
     }
