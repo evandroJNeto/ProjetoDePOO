@@ -15,6 +15,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.SelectionMode;
+import java.util.ArrayList;
 
 public class TabelaViewController implements Initializable {
 
@@ -32,6 +34,25 @@ public class TabelaViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         configurarColunas();
+    
+        tabelaView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    }
+
+    @FXML
+    private void criarGraficoEvolucao() {
+        List<Time> timesSelecionados = tabelaView.getSelectionModel().getSelectedItems();
+    
+        if (timesSelecionados.isEmpty()) {
+            showAlert("Aviso", "Selecione pelo menos um time para ver a evolução.");
+            return;
+        }
+    
+        if (timesSelecionados.size() > 5) {
+            showAlert("Aviso", "Selecione no máximo 5 times para melhor visualização.");
+            return;
+        }
+    
+        Graficos.criarGraficoEvolucao(timesSelecionados);
     }
 
     private void configurarColunas() {

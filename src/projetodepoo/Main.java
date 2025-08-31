@@ -11,7 +11,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        // 1. Carrega os dados (mesma lógica do seu 'main' antigo)
         Leitor leitor = new Leitor();
         List<Jogo> todosOsJogos = leitor.lerJogos("campeonato-brasileiro.csv");
         Campeonato brasileirao = new Campeonato(todosOsJogos);
