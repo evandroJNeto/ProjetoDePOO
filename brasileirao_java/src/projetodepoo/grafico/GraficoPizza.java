@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package projetodepoo;
+package projetodepoo.grafico;
 
 import java.util.List;
 import javafx.collections.FXCollections;
@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import projetodepoo.modelos.Time;
 
 public class GraficoPizza extends Grafico {
 

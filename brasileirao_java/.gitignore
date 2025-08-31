@@ -1,1 +1,7 @@
-/dist/
+build/
+dist/
+javafx-sdk-*/
+nbproject/private/
+
+*.class
+*.jar

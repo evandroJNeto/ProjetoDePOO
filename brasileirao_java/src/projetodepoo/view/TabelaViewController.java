@@ -1,16 +1,13 @@
-package projetodepoo;
+package projetodepoo.view;
 
 import java.io.File;
 import java.net.URL;
-import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -19,6 +16,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.Alert;
 import javafx.stage.FileChooser;
+import projetodepoo.grafico.Grafico;
+import projetodepoo.grafico.GraficoBarras;
+import projetodepoo.grafico.GraficoEvolucao;
+import projetodepoo.grafico.GraficoPizza;
+import projetodepoo.modelos.Campeonato;
+import projetodepoo.modelos.Jogo;
+import projetodepoo.modelos.Time;
+import projetodepoo.processamento.Leitor;
 
 public class TabelaViewController implements Initializable {
 

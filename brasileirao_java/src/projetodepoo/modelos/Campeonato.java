@@ -1,4 +1,4 @@
-package projetodepoo;
+package projetodepoo.modelos;
 
 import java.util.ArrayList;
 import java.util.Collections;

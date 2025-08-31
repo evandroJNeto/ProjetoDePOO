@@ -1,4 +1,4 @@
-package projetodepoo;
+package projetodepoo.processamento;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -16,6 +16,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import projetodepoo.modelos.Jogo;
 
 public class Leitor {
 

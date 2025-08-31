@@ -1,6 +1,7 @@
-package projetodepoo;
+package projetodepoo.grafico;
 
 import java.util.List;
+import projetodepoo.modelos.Time;
 
 public abstract class Grafico {
     protected List<Time> times;

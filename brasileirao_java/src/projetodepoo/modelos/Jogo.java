@@ -1,4 +1,4 @@
-package projetodepoo;
+package projetodepoo.modelos;
 
 public class Jogo {
     private String rodada;

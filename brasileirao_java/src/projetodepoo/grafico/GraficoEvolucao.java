@@ -1,9 +1,10 @@
-package projetodepoo;
+package projetodepoo.grafico;
 
 import java.util.List;
 import javafx.scene.Scene;
 import javafx.scene.chart.*;
 import javafx.stage.Stage;
+import projetodepoo.modelos.Time;
 
 public class GraficoEvolucao extends Grafico {
 
