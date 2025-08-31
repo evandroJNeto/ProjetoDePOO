@@ -1,4 +1,5 @@
 from PyQt5.QtCore import Qt, QAbstractTableModel
+from PyQt5.QtGui import QColor 
 
 class TabelaClassificacao(QAbstractTableModel):
     
@@ -13,18 +14,38 @@ class TabelaClassificacao(QAbstractTableModel):
     def columnCount(self, parent=None):
         return len(self.colunas)
     
-    def data(self, index, role=Qt.DisplayRole):
-        if not index.isValid():
-            return None
-            
-        time = self.times[index.row()]
-        coluna = index.column()
-        
-        if role == Qt.DisplayRole:
-            return self._obter_dado(time, coluna)
-        elif role == Qt.TextAlignmentRole:
-            return self._obter_alinhamento(coluna)
+   # Dentro da classe TabelaClassificacao, substitua o método data
+
+def data(self, index, role=Qt.DisplayRole):
+    if not index.isValid():
         return None
+        
+    linha = index.row()
+    coluna = index.column()
+    time = self.times[linha]
+    
+    # Se a tabela pedir o TEXTO para exibir
+    if role == Qt.DisplayRole:
+        return self._obter_dado(time, coluna)
+    
+    # Se a tabela pedir o ALINHAMENTO do texto
+    elif role == Qt.TextAlignmentRole:
+        return self._obter_alinhamento(coluna)
+        
+    # --- ADICIONE ESTE NOVO BLOCO ---
+    # Se a tabela pedir a COR DE FUNDO
+    elif role == Qt.BackgroundRole:
+        # Posições 1-4 (G4)
+        if linha < 4:
+            return QColor("#A0C4FF")
+        elif linha < 6:
+            return QColor("#FFDDA0")
+        elif linha < 12:
+            return QColor("#B5EAD7")
+        elif linha >= 16:
+            return QColor("#FFB8B8")
+
+    return None
     
     def _obter_dado(self, time, coluna):
         dados = {
