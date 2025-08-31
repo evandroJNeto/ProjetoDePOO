@@ -16,14 +16,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.SelectionMode;
-import java.util.ArrayList;
+import javafx.scene.control.Alert;
 
 public class TabelaViewController implements Initializable {
 
     @FXML private TableView<Time> tabelaView;
     @FXML private TableColumn<Time, String> colunaNome;
-    @FXML private TableColumn<Time, Integer> colunaPontos, colunaJogos, colunaVitorias, colunaEmpates, 
-                                            colunaDerrotas, colunaGolsPro, colunaGolsContra, colunaSaldoGols;
+    @FXML private TableColumn<Time, Integer> colunaPontos, colunaJogos, colunaVitorias, colunaEmpates, colunaDerrotas, colunaGolsPro, colunaGolsContra, colunaSaldoGols;
     @FXML private TableColumn<Time, Integer> colunaPos;
     @FXML private TextField buscaTextField;
     @FXML private Button graficoButton;
@@ -53,6 +52,20 @@ public class TabelaViewController implements Initializable {
         }
     
         Graficos.criarGraficoEvolucao(timesSelecionados);
+    }
+    
+    @FXML
+    private void criarGraficoPizza() {
+        Time timeSelecionado = tabelaView.getSelectionModel().getSelectedItem();
+
+        if (timeSelecionado != null) {
+            List<Time> grafTimes = Collections.singletonList(timeSelecionado);
+            Platform.runLater(() -> {
+                Graficos.graficoPizza(grafTimes);
+            });
+        } else {
+            showAlert("Aviso", "Selecione um time na tabela antes de clicar no botão.");
+        }
     }
 
     private void configurarColunas() {
@@ -92,29 +105,11 @@ public class TabelaViewController implements Initializable {
             showAlert("Aviso", "Selecione um time na tabela antes de clicar no botão.");
         }
     }
-
-    @FXML
-    private void buscarTime() {
-        String textoBusca = buscaTextField.getText().trim();
-        if (textoBusca.isEmpty()) {
-            tabelaView.setItems(dadosOriginais);
-            return;
-        }
-
-        ObservableList<Time> resultados = FXCollections.observableArrayList();
-        for (Time time : dadosOriginais) {
-            if (time.getNome().toLowerCase().contains(textoBusca.toLowerCase())) {
-                resultados.add(time);
-            }
-        }
-        tabelaView.setItems(resultados);
-    }
-
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(title);
+    private void showAlert(String titulo, String menssagem){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(titulo);
         alert.setHeaderText(null);
-        alert.setContentText(message);
+        alert.setContentText(menssagem);
         alert.showAndWait();
     }
 }

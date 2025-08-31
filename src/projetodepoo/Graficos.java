@@ -8,6 +8,10 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.chart.PieChart;
+import javafx.scene.layout.BorderPane;
 
 public class Graficos {
 
@@ -87,4 +91,39 @@ public class Graficos {
         stage.setTitle("Evolução dos Times");
         stage.show();
     }
-}
+         public static void graficoPizza(List<Time> lista){
+            if (lista == null || lista.isEmpty()) {
+            throw new IllegalArgumentException("Lista de times vazia.");
+        }
+
+        Time time = lista.get(0);
+        int v = Math.max(0, time.getVitorias());
+        int e = Math.max(0, time.getEmpates());
+        int d = Math.max(0, time.getDerrotas());
+        int total = v + e + d;
+
+        ObservableList<PieChart.Data> dados = FXCollections.observableArrayList(
+            new PieChart.Data("Derrotas", d),
+            new PieChart.Data("Empates", e),
+            new PieChart.Data("Vitorias", v)
+        );
+
+        PieChart pie = new PieChart(dados);
+        pie.setTitle("Desempenho de " + time.getNome());
+        pie.setLegendVisible(true);
+        pie.setLabelsVisible(true);
+
+        if (total > 0) {
+            for (PieChart.Data dado : pie.getData()) {
+                double pct = (dado.getPieValue() / total) * 100.0;
+                dado.nameProperty().set(String.format("%s (%.1f%%)", dado.getName(), pct));
+            }
+        }
+
+        BorderPane root = new BorderPane(pie);
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root, 600, 400));
+        stage.setTitle("Gráfico de Desempenho (Pizza) - " + time.getNome());
+        stage.show();
+        }
+    }
