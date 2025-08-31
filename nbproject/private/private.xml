@@ -3,14 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Fagundes/Documents/NetBeansProjects/ProjetoDePOO/src/projetodepoo/Tabela.java</file>
-            <file>file:/C:/Users/Fagundes/Documents/NetBeansProjects/ProjetoDePOO/src/projetodepoo/Time.java</file>
-            <file>file:/C:/Users/Fagundes/Documents/NetBeansProjects/ProjetoDePOO/src/projetodepoo/MainWindow.java</file>
-            <file>file:/C:/Users/Fagundes/Documents/NetBeansProjects/ProjetoDePOO/src/projetodepoo/Leitor.java</file>
-            <file>file:/C:/Users/Fagundes/Documents/NetBeansProjects/ProjetoDePOO/src/projetodepoo/Jogo.java</file>
             <file>file:/C:/Users/Fagundes/Documents/NetBeansProjects/ProjetoDePOO/src/projetodepoo/Graficos.java</file>
-            <file>file:/C:/Users/Fagundes/Documents/NetBeansProjects/ProjetoDePOO/src/projetodepoo/Campeonato.java</file>
-            <file>file:/C:/Users/Fagundes/Documents/NetBeansProjects/ProjetoDePOO/src/module-info.java</file>
+            <file>file:/C:/Users/Fagundes/Documents/NetBeansProjects/ProjetoDePOO/src/projetodepoo/TabelaView.fxml</file>
+            <file>file:/C:/Users/Fagundes/Documents/NetBeansProjects/ProjetoDePOO/src/projetodepoo/TabelaViewController.java</file>
+            <file>file:/C:/Users/Fagundes/Documents/NetBeansProjects/ProjetoDePOO/src/projetodepoo/Time.java</file>
+            <file>file:/C:/Users/Fagundes/Documents/NetBeansProjects/ProjetoDePOO/src/projetodepoo/Main.java</file>
         </group>
     </open-files>
 </project-private>
