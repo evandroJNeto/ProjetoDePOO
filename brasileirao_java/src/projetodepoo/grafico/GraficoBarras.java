@@ -28,7 +28,6 @@ public class GraficoBarras extends Grafico {
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.setName("Desempenho");
         
-        // Adicionar dados
         XYChart.Data<String, Number> vitorias = new XYChart.Data<>("Vitórias", time.getVitorias());
         XYChart.Data<String, Number> empates = new XYChart.Data<>("Empates", time.getEmpates());
         XYChart.Data<String, Number> derrotas = new XYChart.Data<>("Derrotas", time.getDerrotas());
