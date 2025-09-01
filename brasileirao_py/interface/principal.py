@@ -3,16 +3,26 @@ from processamento.leitor import LeitorPartidas
 from processamento.campeonato import GerenciadorCampeonato
 from interface.tabela import TabelaClassificacao
 from grafico.criar import CriarGrafico
+from PyQt5.QtWidgets import QFileDialog 
 
 class JanelaPrincipal(QMainWindow):
     
     def __init__(self):
         super().__init__()
-        self.campeonato = None
+        self.campeonato = GerenciadorCampeonato()
         self.janela_grafico = None
         self.configurar_interface()
-        self.carregar_dados()
-    
+        self.atualizar_tabela()
+
+    def abrir_arquivo_csv(self):
+        caminho, _ = QFileDialog.getOpenFileName(
+            self,
+            "Selecionar Arquivo CSV do Campeonato", "", "Arquivos CSV (*.csv);;Todos os Arquivos (*)"
+        )
+
+        if caminho:
+            self.carregar_dados(caminho)
+
     def configurar_interface(self):
         self.setWindowTitle("Brasileirão - Tabela do Campeonato")
         self.setGeometry(100, 100, 1000, 600)
@@ -37,20 +47,28 @@ class JanelaPrincipal(QMainWindow):
         botao_pizza = QPushButton("Gráfico de Desempenho (Pizza)")
         botao_pizza.clicked.connect(self.mostrar_pizza)
 
+        botao_abrir_arquivo = QPushButton("Abrir Arquivo CSV")
+        botao_abrir_arquivo.clicked.connect(self.abrir_arquivo_csv)
+
         layout_botoes.addWidget(botao_desempenho)
         layout_botoes.addWidget(botao_evolucao)
         layout_botoes.addWidget(botao_pizza)
         layout_botoes.addStretch()
+        layout_botoes.addWidget(botao_abrir_arquivo)
         
         layout.addWidget(self.tabela)
         layout.addLayout(layout_botoes)
         
         widget_central.setLayout(layout)
     
-    def carregar_dados(self):
+    def carregar_dados(self, caminho_arquivo):
         leitor = LeitorPartidas()
-        partidas = leitor.processar("campeonato-brasileiro.csv")
+        partidas = leitor.processar(caminho_arquivo)
         
+        if not partidas:
+            self.mostrar_aviso("Não foi possível carregar os dados do arquivo selecionado.")
+            return
+
         self.campeonato = GerenciadorCampeonato()
         self.campeonato.processar(partidas)
         
